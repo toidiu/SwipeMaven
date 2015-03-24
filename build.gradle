@@ -1,0 +1,61 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 21
+    buildToolsVersion "21.1.2"
+
+    packagingOptions {
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/dependencies.txt'
+        exclude 'META-INF/LGPL2.1'
+    }
+
+    defaultConfig {
+        applicationId "toidiu.co.swipemaven"
+        minSdkVersion 16
+        targetSdkVersion 21
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:21.0.3'
+    compile "com.android.support:support-v4:21.0.3"
+    compile 'com.android.support:recyclerview-v7:21.0.0'
+
+    compile 'com.jakewharton:butterknife:6.1.0'
+    compile 'commons-io:commons-io:2.4'
+    compile 'org.apache.commons:commons-lang3:3.3.2'
+    provided 'com.intellij:annotations:9.0.4'
+    compile 'com.squareup.retrofit:retrofit:1.9.0'
+    compile 'de.greenrobot:eventbus:2.2.1'
+
+    compile 'com.squareup.picasso:picasso:2.4.0'
+    compile 'com.j256.ormlite:ormlite-core:4.48'
+    compile 'com.j256.ormlite:ormlite-android:4.48'
+    compile 'de.timroes.android:EnhancedListView:0.3.4'
+
+//    compile 'com.squareup.okhttp:okhttp-urlconnection:2.0.0'
+//    compile 'com.squareup.okio:okio:1.1.0'
+
+//    compile 'com.google.android.gms:play-services-base:6.5.87'
+
+//    compile 'com.google.android.gms:play-services-base:6.5.87'
+
+}
