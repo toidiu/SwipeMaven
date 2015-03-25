@@ -10,14 +10,14 @@
         android:layout_height="wrap_content"/>
 
 
-    <www.oystour.com.oystour.views.LockableScrollView
+    <toidiu.co.swipemaven.views.LockableScrollView
         android:id="@+id/lock_scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <include layout="@layout/scrollview_layout"/>
 
-    </www.oystour.com.oystour.views.LockableScrollView>
+    </toidiu.co.swipemaven.views.LockableScrollView>
 
 
 </RelativeLayout>
