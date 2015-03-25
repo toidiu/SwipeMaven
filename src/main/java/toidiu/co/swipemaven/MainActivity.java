@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -17,19 +16,19 @@ import toidiu.co.swipemaven.views.LockableScrollView;
 
 public class MainActivity extends ActionBarActivity
 {
+    //~=~=~=~=~=~=~=~=~=~=~=~=Constants
+    public static final int SCROLL_ENABLE_DELAY = 500;
     //~=~=~=~=~=~=~=~=~=~=~=~=Views
     private LockableScrollView lockableScroll;
     private ViewPager          swipe;
     private View               scrollPadding;
-
     //~=~=~=~=~=~=~=~=~=~=~=~=Fields
-    Handler handler = new Handler();
+    Handler  handler  = new Handler();
     Runnable runnable = new Runnable()
     {
         @Override
         public void run()
         {
-            Log.d("------runnable", "unlock");
             lockableScroll.setScrollingEnabled(true);
         }
     };
@@ -85,7 +84,7 @@ public class MainActivity extends ActionBarActivity
                         int screenHeight = layout.getMeasuredHeight();
                         int statusBarHeight = getStatusBarHeight();
                         int nameTextHeight = findViewById(R.id.title).getMeasuredHeight();
-                        int extraHeight = 200;
+                        int extraHeight = 100;
 
                         int padding = screenHeight - statusBarHeight - nameTextHeight - extraHeight;
                         scrollPadding.setPadding(0, padding, 0, 0);
@@ -97,7 +96,6 @@ public class MainActivity extends ActionBarActivity
             @Override
             public boolean onTouch(View v, MotionEvent event)
             {
-                Log.d("------touch", "lock");
                 lockableScroll.setScrollingEnabled(false);
                 return swipe.onTouchEvent(event);
             }
@@ -108,23 +106,20 @@ public class MainActivity extends ActionBarActivity
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels)
             {
-                Log.d("------onPageScrolled", "now");
             }
 
             @Override
             public void onPageSelected(int position)
             {
-                Log.d("------onPageSelected", "now");
             }
 
             @Override
             public void onPageScrollStateChanged(int state)
             {
-                Log.d("------onPageScrollStateChanged", String.valueOf(state));
                 if(state == ViewPager.SCROLL_STATE_IDLE)
                 {
                     handler.removeCallbacks(runnable);
-                    handler.postDelayed(runnable, 800);
+                    handler.postDelayed(runnable, SCROLL_ENABLE_DELAY);
                 }
             }
         });
